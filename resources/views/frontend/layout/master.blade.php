@@ -53,7 +53,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ route('frontend.home.index') }}"><i class="fa fa-home"></i> {{ trans('navbar.homepage') }}</a></li>
                 <li><a href="{{ route('frontend.sector.index') }}"><i class="fa fa-briefcase"></i> {{ trans('navbar.sectors') }}</a></li>
-                <li><a href="{{ route('frontend.brand.index') }}"><i class="fa fa-star"></i> {{ trans('navbar.brand') }}</a></li>
+                <li><a href="{{ route('frontend.company.brand') }}"><i class="fa fa-star"></i> {{ trans('navbar.brand') }}</a></li>
                 <li><a href="{{ route('frontend.company.index') }}"><i class="fa fa-building"></i> {{ trans('navbar.companies') }}</a></li>
                 <li><a href="{{ route('frontend.news.index') }}"><i class="fa fa-newspaper-o"></i> {{ trans('navbar.news') }}</a></li>
                 <li><a href="{{ route('frontend.contact.show') }}"><i class="fa fa-phone"></i> {{ trans('navbar.contact') }}</a></li>

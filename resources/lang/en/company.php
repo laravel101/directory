@@ -6,4 +6,6 @@ return [
     'new-companies' => "New Companies",
     'all-companies' => "All Companies",
     'search' => "Search Company...",
+    'no-brand' => "There is no brand company",
+    'no-company' => "There is no company",
 ];

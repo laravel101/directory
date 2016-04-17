@@ -1,5 +1,13 @@
 <?php
 
+Route::bind('sector', function($value, $route){
+    return App\Sector::where("slug", $value)->first();
+});
+
+Route::bind('company', function($value, $route){
+    return App\Company::where("slug", $value)->first();
+});
+
 /**
  * Frontend Routes
  */
@@ -11,7 +19,7 @@ Route::group(["namespace" => 'Frontend', "as" => "frontend."], function(){
     Route::get("company", ["as" => "company.index", "uses" => "CompanyController@index"]);
     Route::get("company/{company}", ["as" => "company.show", "uses" => "CompanyController@show"]);
 
-    Route::get("brand", ["as" => "brand.index", "uses" => "BrandController@index"]);
+    Route::get("brand", ["as" => "company.brand", "uses" => "CompanyController@brand"]);
 
     Route::get("sector", ["as" => "sector.index", "uses" => "SectorController@index"]);
     Route::get("sector/{sector}", ["as" => "sector.show", "uses" => "SectorController@show"]);
