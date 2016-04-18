@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Http\Requests;
+use App\Http\Requests\SearchRequest;
 
 class CompanyController extends FrontendController
 {
@@ -28,6 +29,16 @@ class CompanyController extends FrontendController
         $company->save();
         return view("frontend.company.show", [
             'company' => $company,
+        ]);
+    }
+
+    public function search(SearchRequest $request)
+    {
+        $q = $request->get("q");
+
+        $companies = Company::where("is_active", true)->latest(12)->paginate();
+        return view("frontend.company.index", [
+            'companies' => $companies,
         ]);
     }
 }
