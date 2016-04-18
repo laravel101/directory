@@ -8,4 +8,5 @@ return [
     'search' => "Search Company...",
     'no-brand' => "There is no brand company",
     'no-company' => "There is no company",
+    "search-result" => "':query' Search Results (:total)"
 ];

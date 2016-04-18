@@ -36,9 +36,11 @@ class CompanyController extends FrontendController
     {
         $q = $request->get("q");
 
-        $companies = Company::where("is_active", true)->latest(12)->paginate();
-        return view("frontend.company.index", [
+        $companies = Company::where("is_active", true)->latest()->take(12)->paginate();
+        return view("frontend.company.search", [
             'companies' => $companies,
+            "query"     => $q,
+            "total"     => 0,
         ]);
     }
 }
