@@ -29,7 +29,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img src="{{ asset('assets/images/logo.png') }}" class="img-responsive logo">
+                <a href="{{ route("frontend.home.index") }}">
+                    <img src="{{ asset('assets/images/logo.png') }}" class="img-responsive logo">
+                </a>
             </div>
             <div class="col-md-8">
                 <img src="{{ asset('assets/images/reklam.png') }}" class="img-responsive ads ads-header">

@@ -12,6 +12,7 @@
     {!! Form::close() !!}
 </div>
 
+@if(!auth()->check())
 <div class="widget widget-login panel panel-primary">
     {!! Form::open(['route' => 'frontend.user.login']) !!}
     <div class="panel-heading">
@@ -33,6 +34,7 @@
     </div>
     {!! Form::close() !!}
 </div>
+@endif
 
 <div class="widget widget-sectors panel panel-success">
     <div class="panel-heading">
