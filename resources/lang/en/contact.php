@@ -14,4 +14,6 @@ return [
     "form-phone"   => "Phone",
     "form-message" => "Message",
     "form-send"    => "Send Contact Message",
+
+    "sended" => "Contact message successfully sended!",
 ];
