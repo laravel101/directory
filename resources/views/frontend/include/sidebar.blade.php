@@ -66,11 +66,15 @@
     <div class="panel-body">
         @foreach(\App\News::latest()->take(5)->get() as $item)
             <div class="row">
-                <div class="col-xs-3">
-                    <img src="{{ asset($item->image) }}" class="img-thumbnail img-responsive">
-                </div>
-                <div class="col-xs-9">
-                    <h4>{{ $item->name }}</h4>
+                @if($item->image)
+                    <div class="col-xs-3">
+                        <a href="{{ route('frontend.news.show', $item->slug) }}"><img src="{{ asset($item->image) }}" class="img-thumbnail img-responsive"></a>
+                    </div>
+                    <div class="col-xs-9">
+                @else
+                    <div class="col-xs-12">
+                @endif
+                    <h4><a href="{{ route('frontend.news.show', $item->slug) }}">{{ $item->name }}</a></h4>
                     <p class="text-muted">{{ trans('news.date', ['date' => $item->created_at->format('d.m.Y')]) }}</p>
                 </div>
             </div>

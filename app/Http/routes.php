@@ -8,6 +8,10 @@ Route::bind('company', function($value, $route){
     return App\Company::where("slug", $value)->first();
 });
 
+Route::bind("news", function($value, $route){
+    return App\News::where("slug", $value)->first();
+});
+
 /**
  * Frontend Routes
  */
