@@ -54,7 +54,7 @@ Route::group(["namespace" => 'Frontend', "as" => "frontend."], function(){
  * Backend Routes
  */
 
-Route::group(["namespace" => "Backend", "as" => "backend."], function(){
+Route::group(["namespace" => "Backend", "as" => "backend.", "prefix" => config('app.backend')], function(){
 
     Route::group(["middleware" => "guest"], function(){
         Route::get("login", ["as" => "user.login", "uses" => "UserController@login"]);
@@ -64,8 +64,8 @@ Route::group(["namespace" => "Backend", "as" => "backend."], function(){
     Route::group(["middleware" => "admin"], function(){
         Route::get("/", ["as" => "dashboard.index", "uses" => "DashboardController@index"]);
 
-        Route::get("sector", ["as" => "sector.index", "uses" => "SectorController@index"]);
-        Route::get("sector/create", ["as" => "sector.create", "uses" => "SectorController@create"]);
+        Route::get("sector/{sector?}", ["as" => "sector.index", "uses" => "SectorController@index"]);
+        Route::get("sector/{sector_parent}/create", ["as" => "sector.create", "uses" => "SectorController@create"]);
         Route::post("sector", ["as" => "sector.store", "uses" => "SectorController@store"]);
         Route::get("sector/{sector}/edit", ["as" => "sector.edit", "uses" => "SectorController@edit"]);
         Route::put("sector/{sector}", ["as" => "sector.update", "uses" => "SectorController@update"]);

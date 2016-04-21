@@ -26,8 +26,11 @@
                     </div>
                 </div>
             </li>
-            <li class="active">
-                <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">{{ trans("backend.nav.dashboard") }}</span></a>
+            <li @if(Request::is(config('app.backend'))) class="active" @endif>
+                <a href="{{ route('backend.dashboard.index') }}"><span class="fa fa-desktop"></span> <span class="xn-text">{{ trans("backend.nav.dashboard") }}</span></a>
+            </li>
+            <li @if(Request::is(config('app.backend')."/sector*")) class="active" @endif>
+                <a href="{{ route('backend.sector.index') }}"><span class="fa fa-bars"></span> <span class="xn-text">{{ trans("backend.nav.sectors") }}</span></a>
             </li>
         </ul>
         <!-- END X-NAVIGATION -->
@@ -87,7 +90,6 @@
 @stop
 
 @section("page.js")
-    <script type="text/javascript" src="{{ asset('backend/js/settings.js') }}"></script>
     <script type="text/javascript" src="{{ asset('backend/js/plugins.js') }}"></script>
     <script type="text/javascript" src="{{ asset('backend/js/actions.js') }}"></script>
 @stop

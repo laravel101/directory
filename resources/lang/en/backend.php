@@ -5,5 +5,6 @@ return [
 
     "nav" => [
         "dashboard" => "Dashboard",
+        "sectors"   => "Sector Management",
     ],
 ];
