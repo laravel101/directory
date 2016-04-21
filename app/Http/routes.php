@@ -49,3 +49,53 @@ Route::group(["namespace" => 'Frontend', "as" => "frontend."], function(){
         Route::post("reset/password", ["as" => "user.reset.password", 'uses' => "UserController@resetPassword"]);
     });
 });
+
+/**
+ * Backend Routes
+ */
+
+Route::group(["namespace" => "Backend", "as" => "backend."], function(){
+
+    Route::group(["middleware" => "guest"], function(){
+        Route::get("login", ["as" => "user.login", "uses" => "UserController@login"]);
+        Route::post("login", ["as" => "user.login", "uses" => "UserController@doLogin"]);
+    });
+
+    Route::group(["middleware" => "auth"], function(){
+        Route::get("/", ["as" => "dashboard.index", "uses" => "DashboardController@index"]);
+
+        Route::get("sector", ["as" => "sector.index", "uses" => "SectorController@index"]);
+        Route::get("sector/create", ["as" => "sector.create", "uses" => "SectorController@create"]);
+        Route::post("sector", ["as" => "sector.store", "uses" => "SectorController@store"]);
+        Route::get("sector/{sector}/edit", ["as" => "sector.edit", "uses" => "SectorController@edit"]);
+        Route::put("sector/{sector}", ["as" => "sector.update", "uses" => "SectorController@update"]);
+        Route::get("sector/{sector}/delete", ["as" => "sector.destroy", "uses" => "SectorController@destroy"]);
+
+        Route::get("company", ["as" => "company.index", "uses" => "CompanyController@index"]);
+        Route::get("company/create", ["as" => "company.create", "uses" => "CompanyController@create"]);
+        Route::post("company", ["as" => "company.store", "uses" => "CompanyController@store"]);
+        Route::get("company/{company}/edit", ["as" => "company.edit", "uses" => "CompanyController@edit"]);
+        Route::put("company/{company}", ["as" => "company.update", "uses" => "CompanyController@update"]);
+        Route::get("company/{company}/delete", ["as" => "company.destroy", "uses" => "CompanyController@destroy"]);
+
+        Route::get("user", ["as" => "user.index", "uses" => "UserController@index"]);
+        Route::get("user/create", ["as" => "user.create", "uses" => "UserController@create"]);
+        Route::post("user", ["as" => "user.store", "uses" => "UserController@store"]);
+        Route::get("user/{user}/edit", ["as" => "user.edit", "uses" => "UserController@edit"]);
+        Route::put("user/{user}", ["as" => "user.update", "uses" => "UserController@update"]);
+        Route::get("user/{user}/delete", ["as" => "user.destroy", "uses" => "UserController@destroy"]);
+
+        Route::get("inbox/{inbox_type?}", ["as" => "inbox.index", "uses" => "InboxController@index"]);
+        Route::get("inbox/{inbox_type}/{inbox}", ["as" => "inbox.show", "uses" => "InboxController@show"]);
+
+        Route::get("news", ["as" => "news.index", "uses" => "NewsController@index"]);
+        Route::get("news/create", ["as" => "news.create", "uses" => "NewsController@create"]);
+        Route::post("news", ["as" => "news.store", "uses" => "NewsController@store"]);
+        Route::get("news/{news}/edit", ["as" => "news.edit", "uses" => "NewsController@edit"]);
+        Route::put("news/{news}", ["as" => "news.update", "uses" => "NewsController@update"]);
+        Route::get("news/{news}/delete", ["as" => "news.destroy", "uses" => "NewsController@destroy"]);
+
+        Route::get("logout", ["as" => "user.logout", "uses" => "UserController@logout"]);
+    });
+
+});
