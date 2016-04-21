@@ -61,7 +61,7 @@ Route::group(["namespace" => "Backend", "as" => "backend."], function(){
         Route::post("login", ["as" => "user.login", "uses" => "UserController@doLogin"]);
     });
 
-    Route::group(["middleware" => "auth"], function(){
+    Route::group(["middleware" => "admin"], function(){
         Route::get("/", ["as" => "dashboard.index", "uses" => "DashboardController@index"]);
 
         Route::get("sector", ["as" => "sector.index", "uses" => "SectorController@index"]);
