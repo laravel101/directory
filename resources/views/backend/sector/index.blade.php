@@ -3,6 +3,9 @@
 @section("content")
     <div class="row">
         <div class="col-md-12 text-right">
+            @if($parent)
+                <a href="{{ route("backend.sector.index", $parent->parent_id ? $parent->parent->slug : null) }}" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Back</a>
+            @endif
             <a href="{{ route('backend.sector.create', $parent == null ? 0 : $parent->slug) }}" class="btn btn-success"><i class="fa fa-plus"></i> New Sector</a>
         </div>
     </div>
@@ -25,7 +28,9 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th class="text-center">Company</th>
+                                @if(!$parent)
                                 <th class="text-center">Sub Sectors</th>
+                                @endif
                                 <th class="text-right">Actions</th>
                             </tr>
                             </thead>
@@ -35,7 +40,11 @@
                                     <td>{{ $sector->id }}</td>
                                     <td>@if($sector->icon) <i class="{{ $sector->icon }}"></i> @endif {{ $sector->name }}</td>
                                     <td class="text-center"><span class="label label-primary">{{ $sector->companies->count() }} Company</span></td>
-                                    <td class="text-center"><a href="{{ route('backend.sector.index', $sector->slug) }}" class="btn btn-xs btn-info">{{ $sector->subs->count() }} Sub Sectors</a></td>
+                                    @if(!$parent)
+                                    <td class="text-center">
+                                        <a href="{{ route('backend.sector.index', $sector->slug) }}" class="btn btn-xs btn-info">{{ $sector->subs->count() }} Sub Sectors</a>
+                                    </td>
+                                    @endif
                                     <td class="text-right">
                                         <a href="{{ route('backend.sector.edit', $sector->slug) }}" title="{{ $sector->name }}" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Edit</a>
                                         <a href="{{ route('backend.sector.destroy', $sector->slug) }}" title="{{ $sector->name }}" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i> Delete</a>

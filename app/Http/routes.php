@@ -77,6 +77,8 @@ Route::group(["namespace" => "Backend", "as" => "backend.", "prefix" => config('
         Route::get("company/{company}/edit", ["as" => "company.edit", "uses" => "CompanyController@edit"]);
         Route::put("company/{company}", ["as" => "company.update", "uses" => "CompanyController@update"]);
         Route::get("company/{company}/delete", ["as" => "company.destroy", "uses" => "CompanyController@destroy"]);
+        Route::get("company/{company}/brand", ["as" => "company.brand", "uses" => "CompanyController@brandToggle"]);
+        Route::get("company/{company}/active", ["as" => "company.active", "uses" => "CompanyController@activeToggle"]);
 
         Route::get("user", ["as" => "user.index", "uses" => "UserController@index"]);
         Route::get("user/create", ["as" => "user.create", "uses" => "UserController@create"]);
