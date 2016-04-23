@@ -7,5 +7,6 @@ return [
         "dashboard" => "Dashboard",
         "sectors"   => "Sector Management",
         "companies" => "Company Management",
+        "news"      => "News Management",
     ],
 ];

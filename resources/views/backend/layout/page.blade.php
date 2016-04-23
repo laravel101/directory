@@ -35,6 +35,9 @@
             <li @if(Request::is(config('app.backend')."/company*")) class="active" @endif>
                 <a href="{{ route('backend.company.index') }}"><span class="fa fa-building"></span> <span class="xn-text">{{ trans("backend.nav.companies") }}</span></a>
             </li>
+            <li @if(Request::is(config('app.backend')."/news*")) class="active" @endif>
+                <a href="{{ route('backend.news.index') }}"><span class="fa fa-file-text-o"></span> <span class="xn-text">{{ trans("backend.nav.news") }}</span></a>
+            </li>
         </ul>
         <!-- END X-NAVIGATION -->
     </div>
