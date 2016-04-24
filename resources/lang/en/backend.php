@@ -8,5 +8,6 @@ return [
         "sectors"   => "Sector Management",
         "companies" => "Company Management",
         "news"      => "News Management",
+        "inbox"     => "Inbox",
     ],
 ];

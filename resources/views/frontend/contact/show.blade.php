@@ -31,6 +31,13 @@
                 </div>
                 <div class="panel-body">
                     {!! Form::open(["route" => "frontend.contact.send"]) !!}
+                    @if($errors->has())
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
                     <div class="form-group">
                         {!! Form::label("name", trans("contact.form-name")) !!}
                         {!! Form::text("name", old("name"), ["class" => "form-control"]) !!}

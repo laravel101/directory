@@ -89,6 +89,7 @@ Route::group(["namespace" => "Backend", "as" => "backend.", "prefix" => config('
 
         Route::get("inbox/{inbox_type?}", ["as" => "inbox.index", "uses" => "InboxController@index"]);
         Route::get("inbox/{inbox_type}/{inbox}", ["as" => "inbox.show", "uses" => "InboxController@show"]);
+        Route::get("inbox/{inbox_type}/{inbox}/delete", ["as" => "inbox.destroy", "uses" => "InboxController@destroy"]);
 
         Route::get("news", ["as" => "news.index", "uses" => "NewsController@index"]);
         Route::get("news/create", ["as" => "news.create", "uses" => "NewsController@create"]);

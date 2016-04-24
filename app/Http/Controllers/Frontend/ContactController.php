@@ -18,6 +18,7 @@ class ContactController extends FrontendController
     public function send(ContactSendRequest $request)
     {
         $inbox = new Inbox();
+        $inbox->subject = "Contact Message";
         $inbox->name = $request->get("name");
         $inbox->email = $request->get("email");
         $inbox->phone = $request->get("phone");

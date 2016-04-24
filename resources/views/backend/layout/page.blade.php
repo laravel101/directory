@@ -38,6 +38,9 @@
             <li @if(Request::is(config('app.backend')."/news*")) class="active" @endif>
                 <a href="{{ route('backend.news.index') }}"><span class="fa fa-file-text-o"></span> <span class="xn-text">{{ trans("backend.nav.news") }}</span></a>
             </li>
+            <li @if(Request::is(config('app.backend')."/inbox*")) class="active" @endif>
+                <a href="{{ route('backend.inbox.index') }}"><span class="fa fa-envelope-o"></span> <span class="xn-text">{{ trans("backend.nav.inbox") }}</span><div class="informer informer-warning">{{ \App\Inbox::where("is_read", 0)->count() }}</div></a>
+            </li>
         </ul>
         <!-- END X-NAVIGATION -->
     </div>
