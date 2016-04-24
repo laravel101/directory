@@ -41,6 +41,9 @@
             <li @if(Request::is(config('app.backend')."/inbox*")) class="active" @endif>
                 <a href="{{ route('backend.inbox.index') }}"><span class="fa fa-envelope-o"></span> <span class="xn-text">{{ trans("backend.nav.inbox") }}</span><div class="informer informer-warning">{{ \App\Inbox::where("is_read", 0)->count() }}</div></a>
             </li>
+            <li @if(Request::is(config('app.backend')."/user*")) class="active" @endif>
+                <a href="{{ route('backend.user.index') }}"><span class="fa fa-user"></span> <span class="xn-text">{{ trans("backend.nav.users") }}</span></a>
+            </li>
         </ul>
         <!-- END X-NAVIGATION -->
     </div>

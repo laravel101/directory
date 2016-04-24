@@ -12,6 +12,10 @@ Route::bind("news", function($value, $route){
     return App\News::where("slug", $value)->first();
 });
 
+Route::bind("user", function($value, $route){
+    return App\User::where("username", $value)->first();
+});
+
 /**
  * Frontend Routes
  */

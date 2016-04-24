@@ -9,5 +9,6 @@ return [
         "companies" => "Company Management",
         "news"      => "News Management",
         "inbox"     => "Inbox",
+        "users"     => "User Management",
     ],
 ];
