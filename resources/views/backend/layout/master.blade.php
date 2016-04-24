@@ -9,6 +9,8 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon" />
 
     <link rel="stylesheet" type="text/css" id="theme" href="{{ asset('backend/css/theme-default.css') }}"/>
+
+    @yield("page.css")
 </head>
 <body>
 

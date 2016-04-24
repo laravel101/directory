@@ -36,7 +36,10 @@
                     <div class="form-group">
                         {!! Form::label("icon", "Sector Icon", ["class" => "col-md-2 control-label"]) !!}
                         <div class="col-md-10">
-                            {!! Form::text("icon", $sector->icon, ["class" => "form-control", "placeholder" => "Sector icon..."]) !!}
+                            <div class="input-group iconpicker-container">
+                                {!! Form::text("icon", ltrim($sector->icon, 'fa\s'), ["class" => "form-control iconpicker", "placeholder" => "Sector icon..."]) !!}
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -55,10 +58,22 @@
     </div>
 @stop
 
+@section("page.css")
+    @parent
+    <link href="{{ asset("backend/css/fontawesome-iconpicker/fontawesome-iconpicker.min.css") }}" rel="stylesheet">
+@stop
+
 @section("page.plugins")
     @parent
+    <script src="{{ asset("backend/js/plugins/fontawesome-iconpicker/fontawesome-iconpicker.min.js") }}"></script>
 @stop
 
 @section("page.js")
     @parent
+    <script>
+        $(".iconpicker").iconpicker({
+            hideOnSelect: true,
+            inputSearch: true
+        });
+    </script>
 @stop

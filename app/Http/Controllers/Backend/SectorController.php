@@ -33,7 +33,7 @@ class SectorController extends BackendController
         $sector = new Sector;
         $sector->name = $request->get("name");
         $sector->slug = $request->get("slug");
-        $sector->icon = $request->get("icon");
+        $sector->icon = "fa ".$request->get("icon");
         $sector->parent_id = $request->get("parent_id") == 0 ? null : $request->get("parent_id");
         $sector->save();
 
@@ -51,7 +51,7 @@ class SectorController extends BackendController
     {
         $sector->name = $request->get("name");
         $sector->slug = $request->get("slug");
-        $sector->icon = $request->get("icon");
+        $sector->icon = "fa ".$request->get("icon");
         $sector->parent_id = $request->get("parent_id") == 0 ? null : $request->get("parent_id");
         $sector->save();
 
