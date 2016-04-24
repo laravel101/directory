@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Company;
+use App\Tag;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\Backend\CompanyCreateRequest;
@@ -53,13 +54,29 @@ class CompanyController extends BackendController
         $company->user_id = auth()->user()->id;
         $company->save();
 
+        $tagIds = [];
+        $tags = explode(",",$request->get("tags"));
+        foreach($tags as $tag) {
+            $tagModel = Tag::firstOrCreate([
+                "name" => $tag,
+                "slug" => str_slug($tag)
+            ]);
+            $tagIds[] = $tagModel->id;
+        }
+        $company->tags()->attach($tagIds);
+
         return redirect()->route("backend.company.index")->with("success", "Company successfully created!");
     }
 
     public function edit(Company $company)
     {
+        $tags = "";
+        foreach($company->tags as $tag)
+            $tags .= $tag->name.",";
+        $tags = rtrim($tags, ",");
         return view("backend.company.edit", [
             "company" => $company,
+            "tags"    => $tags,
         ]);
     }
 
@@ -92,6 +109,17 @@ class CompanyController extends BackendController
             $company->image = "uploads/company/".$filename;
         }
         $company->save();
+
+        $tagIds = [];
+        $tags = explode(",",$request->get("tags"));
+        foreach($tags as $tag) {
+            $tagModel = Tag::firstOrCreate([
+                "name" => $tag,
+                "slug" => str_slug($tag)
+            ]);
+            $tagIds[] = $tagModel->id;
+        }
+        $company->tags()->sync($tagIds);
 
         return redirect()->route("backend.company.index")->with("success", "Company successfully updated!");
     }

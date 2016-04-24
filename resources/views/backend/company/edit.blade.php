@@ -63,6 +63,12 @@
                             {!! Form::textarea("content", $company->content, ["class" => "form-control"]) !!}
                         </div>
                     </div>
+                        <div class="form-group">
+                            {!! Form::label("tags", "Tags", ["class" => "col-md-2 control-label"]) !!}
+                            <div class="col-md-10">
+                                {!! Form::text("tags", $tags, ["class" => "form-control tagsinput"]) !!}
+                            </div>
+                        </div>
                     <div class="form-group">
                         {!! Form::label("phone", "Phone", ["class" => "col-md-2 control-label"]) !!}
                         <div class="col-md-10">
@@ -145,6 +151,7 @@
 
 @section("page.plugins")
     @parent
+    <script type="text/javascript" src="{{ asset("backend/js/plugins/tagsinput/jquery.tagsinput.min.js") }}"></script>
 @stop
 
 @section("page.js")
