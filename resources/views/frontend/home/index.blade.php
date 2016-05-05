@@ -12,7 +12,7 @@
             @if($brands->count() > 0)
                 <div class="row">
                     @foreach($brands as $brand)
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="work">
                                 <div class="work-head">
                                     <a href="{{ route('frontend.company.show', $brand->slug) }}"><img src="{{ asset($brand->image) }}" class="img-responsive"></a>
@@ -84,7 +84,7 @@
         <div class="panel-body">
             <div class="row">
                 @foreach($sectors as $sector)
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="sector-box">
                             <h4>
                                 <a href="{{ route('frontend.sector.show', $sector->slug) }}">

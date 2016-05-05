@@ -23,7 +23,7 @@
                                 @endif
                                     <h4><a href="{{ route('frontend.news.show', $item->slug) }}">{{ $item->name }}</a></h4>
                                     <p class="text-muted"><small>{{ trans("news.date", ["date" => $item->created_at->format("d.m.Y")]) }}</small></p>
-                                    <p>{{ strip_tags($item->content) }}</p>
+                                    <p>{{ str_limit(strip_tags($item->content),200, ' ...') }}</p>
                                 </div>
                             </div>
                         </div>

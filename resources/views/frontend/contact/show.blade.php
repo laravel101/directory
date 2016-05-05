@@ -9,25 +9,10 @@
                 </div>
             </div>
         @endif
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    {{ trans("contact.info") }}
-                </div>
-                <div class="panel-body">
-                    <p>
-                        <i class="fa fa-phone"></i> <a href="tel:">{{ trans("contact.phone", ["phone" => "0 (123) 456 78 90"]) }}</a><br>
-                        <i class="fa fa-fax"></i> {{ trans("contact.fax", ["fax" => "0 (123) 456 78 90"]) }}<br>
-                        <i class="fa fa-envelope"></i> <a href="mailto:">{{ trans("contact.email", ["email" => "mail@mail.com"]) }}</a><br>
-                        <i class="fa fa-map-marker"></i> {{ trans("contact.address", ["address" => "Address Information"]) }}
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    {{ trans("contact.form") }}
+                    {{ trans("contact.contact") }}
                 </div>
                 <div class="panel-body">
                     {!! Form::open(["route" => "frontend.contact.send"]) !!}
@@ -38,6 +23,12 @@
                             @endforeach
                         </div>
                     @endif
+                    <p>
+                        <i class="fa fa-phone"></i> <a href="tel:">{{ trans("contact.phone", ["phone" => "0 (123) 456 78 90"]) }}</a><br>
+                        <i class="fa fa-fax"></i> {{ trans("contact.fax", ["fax" => "0 (123) 456 78 90"]) }}<br>
+                        <i class="fa fa-envelope"></i> <a href="mailto:">{{ trans("contact.email", ["email" => "mail@mail.com"]) }}</a><br>
+                        <i class="fa fa-map-marker"></i> {{ trans("contact.address", ["address" => "Address Information"]) }}
+                    </p>
                     <div class="form-group">
                         {!! Form::label("name", trans("contact.form-name")) !!}
                         {!! Form::text("name", old("name"), ["class" => "form-control"]) !!}

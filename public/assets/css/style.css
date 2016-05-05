@@ -107,6 +107,16 @@ body > section .hasoption .panel-title a.btn-default {
     position: relative;
 }
 
+.work .work-head a {
+    text-align: center;
+    display: block;
+}
+
+.work .work-head a img {
+    display: inline-block;
+    text-align: center;
+}
+
 .work .work-head .work-sector {
     position: absolute;
     top: 5px;
