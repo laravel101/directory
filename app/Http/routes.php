@@ -103,6 +103,8 @@ Route::group(["namespace" => "Backend", "as" => "backend.", "prefix" => config('
         Route::get("news/{news}/delete", ["as" => "news.destroy", "uses" => "NewsController@destroy"]);
 
         Route::get("logout", ["as" => "user.logout", "uses" => "UserController@logout"]);
+
+        Route::get("city-towns", ["as" => "city.towns", "uses" => "CityController@towns"]);
     });
 
 });

@@ -41,10 +41,10 @@
                     <div class="form-group">
                         {!! Form::label("city_id", "City/Town", ["class" => "col-md-2 control-label"]) !!}
                         <div class="col-md-5">
-                            {!! Form::select("city_id", App\City::lists("name", "id")->toArray(), old("city_id"), ["class" => "form-control"]) !!}
+                            {!! Form::select("city_id", App\City::lists("name", "id")->toArray(), old("city_id"), ["class" => "form-control", "id" => "form-city"]) !!}
                         </div>
                         <div class="col-md-5">
-                            {!! Form::select("town_id", App\City::first()->towns()->lists("name", "id")->toArray(), old("town_id"), ["class" => "form-control", "data-old" => old("town_id")]) !!}
+                            {!! Form::select("town_id", App\City::first()->towns()->lists("name", "id")->toArray(), old("town_id"), ["class" => "form-control", "data-old" => old("town_id"), "id" => "form-town"]) !!}
                         </div>
                     </div>
                     <div class="form-group">
@@ -152,4 +152,29 @@
 
 @section("page.js")
     @parent
+    <script>
+        var formCity = $("#form-city");
+        var formTown = $("#form-town");
+
+        formCity.change(function(){
+            console.log("changing");
+            formCity.attr("disabled", "disabled");
+            formTown.attr("disabled", "disabled");
+
+            formTown.html("<option>İlçeler Yükleniyor...</option>");
+            $.ajax({
+                method: "GET",
+                data: "city="+$(this).val(),
+                dataType: "JSON",
+                url: "{{ route('backend.city.towns') }}"
+            }).done(function(data){
+                formTown.html("");
+                $.each(data, function(i, town){
+                    formTown.append("<option value='"+town.id+"'>"+town.name+"</option>");
+                });
+                formCity.removeAttr("disabled");
+                formTown.removeAttr("disabled");
+            });
+        });
+    </script>
 @stop

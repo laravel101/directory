@@ -156,4 +156,29 @@
 
 @section("page.js")
     @parent
+    <script>
+        var formCity = $("#form-city");
+        var formTown = $("#form-town");
+
+        formCity.change(function(){
+            console.log("changing");
+            formCity.attr("disabled", "disabled");
+            formTown.attr("disabled", "disabled");
+
+            formTown.html("<option>İlçeler Yükleniyor...</option>");
+            $.ajax({
+                method: "GET",
+                data: "city="+$(this).val(),
+                dataType: "JSON",
+                url: "{{ route('backend.city.towns') }}"
+            }).done(function(data){
+                formTown.html("");
+                $.each(data, function(i, town){
+                    formTown.append("<option value='"+town.id+"'>"+town.name+"</option>");
+                });
+                formCity.removeAttr("disabled");
+                formTown.removeAttr("disabled");
+            });
+        });
+    </script>
 @stop
